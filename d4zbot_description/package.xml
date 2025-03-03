@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>d4zbot_description</name>
+  <version>0.0.0</version>
+  <description>The d4zbot_description package</description>
+
+  <maintainer email="d4z@todo.todo">d4z</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslaunch</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <build_depend>velodyne_description</build_depend>
+  <build_depend>roslib</build_depend>
+  <build_depend>hector_gazebo_plugins</build_depend>
+  <build_depend>velodyne_gazebo_plugins</build_depend>
+
+  <build_export_depend>roslaunch</build_export_depend>
+  <build_export_depend>urdf</build_export_depend>
+  <build_export_depend>xacro</build_export_depend>
+  <build_export_depend>velodyne_description</build_export_depend>
+  <build_export_depend>roslib</build_export_depend>
+  <build_export_depend>hector_gazebo_plugins</build_export_depend>
+  <build_export_depend>velodyne_gazebo_plugins</build_export_depend>
+
+  <exec_depend>roslaunch</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>velodyne_description</exec_depend>
+  <exec_depend>roslib</exec_depend>
+  <exec_depend>hector_gazebo_plugins</exec_depend>
+  <exec_depend>velodyne_gazebo_plugins</exec_depend>
+
+  <export>
+
+  </export>
+</package>

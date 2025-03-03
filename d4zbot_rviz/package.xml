@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>d4zbot_rviz</name>
+  <version>0.0.0</version>
+  <description>The d4zbot_rviz package</description>
+
+  <maintainer email="d4z@todo.todo">d4z</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>d4z_description</build_depend>
+  <build_depend>joint_state_publisher</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>joint_state_publisher_gui</build_depend>
+  <build_depend>rviz</build_depend>
+  <build_depend>rqt_gui</build_depend>
+  <build_depend>rqt_console</build_depend>
+  <build_depend>rqt_robot_monitor</build_depend>
+
+  <build_export_depend>d4z_description</build_export_depend>
+  <build_export_depend>joint_state_publisher</build_export_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+  <build_export_depend>joint_state_publisher_gui</build_export_depend>
+  <build_export_depend>rviz</build_export_depend>
+  <build_export_depend>rqt_gui</build_export_depend>
+  <build_export_depend>rqt_console</build_export_depend>
+  <build_export_depend>rqt_robot_monitor</build_export_depend>
+
+  <exec_depend>d4z_description</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>rqt_gui</exec_depend>
+  <exec_depend>rqt_console</exec_depend>
+  <exec_depend>rqt_robot_monitor</exec_depend>
+
+  <export>
+
+  </export>
+</package>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot_namespace" default="/"/>    
+
+    <group ns="$(arg robot_namespace)">
+        <!-- LOAD CONTROL.LAUNCH -->
+        <include file="$(find d4zbot_control)/launch/control.launch"/>
+        
+        <!-- SPAWN MODEL ROBOT -->
+        <node name="spawn_d4zbot_model" pkg="gazebo_ros" type="spawn_model"
+            args="-urdf -model d4zbot -param robot_description"/>
+    </group>
+
+</launch>

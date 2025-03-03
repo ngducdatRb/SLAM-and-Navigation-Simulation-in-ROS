@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d4zbot_wheel">
+
+    <xacro:macro name="d4zbot_wheel" params="wheel_prefix x y z friction_coeff">
+        
+    <!-- WHEEL LINK -->
+        <link name="${wheel_prefix}_link">
+
+            <visual>
+                <origin xyz="${-x} ${-y} ${-z}" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="package://d4zbot_description/meshes/${wheel_prefix}_wheel.STL"/>
+                </geometry>
+                <material name="dark_grey"/>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="${PI/2} 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.124" length="0.08"/>
+                </geometry>
+            </collision>
+
+            <inertial>
+				<mass value="3.07" />
+				<origin xyz="0 0 0" />
+				<inertia  ixx="0.015922" ixy="0" ixz="0" iyy="0.028794" iyz="0" izz="0.015922" />
+			</inertial>
+    </link>
+
+    <!-- JOINT -->
+    <joint name="${wheel_prefix}_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="${wheel_prefix}_link"/>
+        <axis xyz="0 1 0" rpy="0 0 0" />
+        <origin xyz="${x} ${y} ${z}" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <!-- GAZEBO -->
+    <gazebo reference="${wheel_prefix}_link">
+        <mu1 value="${friction_coeff}"/>
+        <mu2 value="${friction_coeff}"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <fdir1 value="1 0 0"/>
+        <material>
+            Gazebo/DarkGrey
+        </material>
+    </gazebo>
+
+    <!-- TRANSMISSION -->
+    <transmission name="${wheel_prefix}_wheel_trans" type="SimpleTransmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="${wheel_prefix}_wheel_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="${wheel_prefix}_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    </xacro:macro>
+    
+</robot>

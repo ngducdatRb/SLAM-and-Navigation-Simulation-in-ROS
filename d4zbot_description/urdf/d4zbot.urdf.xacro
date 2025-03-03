@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d4zbot">
+    
+    <!-- INCLUDED URDF/XACRO FILES -->
+    <xacro:include filename="$(find d4zbot_description)/urdf/materials.urdf.xacro"/>
+    <xacro:include filename="$(find d4zbot_description)/urdf/wheel.urdf.xacro"/>
+    <xacro:include filename="$(find d4zbot_description)/urdf/base.urdf.xacro"/>
+    <xacro:include filename="$(find d4zbot_description)/urdf/sensors/hokuyo.urdf.xacro"/>
+    <xacro:include filename="$(find d4zbot_description)/urdf/sensors/kinect.urdf.xacro"/>
+    <xacro:include filename="$(find d4zbot_description)/urdf/sensors/imu.urdf.xacro"/>
+
+    <!-- PROPERTIES -->
+    <xacro:property name="PI" value="3.14159"/>
+
+    <!-- Extras -->
+    <xacro:arg name="robot_namespace" default="$(optenv ROBOT_NAMESPACE /)" />
+
+    <!-- D4ZBOT MACROS -->
+    <xacro:d4zbot_base/>
+    <xacro:d4zbot_wheel wheel_prefix="front_left" x="0.31648" y="0.25125" z="-0.10178" friction_coeff="0.6"/>
+    <xacro:d4zbot_wheel wheel_prefix="front_right" x="0.31648" y="-0.25125" z="-0.10178" friction_coeff="0.6"/>
+    <xacro:d4zbot_wheel wheel_prefix="rear_left" x="-0.31648" y="0.25125" z="-0.10178" friction_coeff="0.15"/>
+    <xacro:d4zbot_wheel wheel_prefix="rear_right" x="-0.31648" y="-0.25125" z="-0.10178" friction_coeff="0.15"/>
+    <xacro:d4zbot_hokuyo/>
+    <xacro:d4zbot_kinect/>
+    <xacro:d4zbot_imu/>
+
+    <!-- PLUGINS -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+          <legacyModeNS>true</legacyModeNS>
+        </plugin>
+    </gazebo>
+
+</robot>

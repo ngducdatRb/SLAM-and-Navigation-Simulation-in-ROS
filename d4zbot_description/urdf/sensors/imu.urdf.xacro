@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="d4zbot_imu">
+
+    <xacro:macro name="d4zbot_imu">
+
+        <!-- Imu link -->
+        <link name="imu_link">
+            <inertial>
+                <mass value="0.05"/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.0001"/>
+            </inertial>
+
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://d4zbot_description/meshes/sensors/imu.dae"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <geometry>
+                    <box size="0.01 0.01 0.01"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <!-- Imu is fixed to the base link -->
+        <joint name="imu_joint" type="fixed">
+            <origin xyz="0.0 0.0 0.01" rpy="0 0 0"/>
+            <parent link="base_link"/>
+            <child link="imu_link"/>
+        </joint>
+
+        <gazebo reference="imu_link">
+            <material>Gazebo/Orange</material>
+        </gazebo>
+      
+      
+        <gazebo reference="imu_joint">
+            <disableFixedJointLumping>true</disableFixedJointLumping>
+        </gazebo>
+
+        <gazebo>   
+            <plugin name="gazebo_ros_imu_controller" filename="libhector_gazebo_ros_imu.so">
+              <updateRate>400</updateRate>
+              <bodyName>imu_link</bodyName>
+              <frameId>imu_link</frameId>
+              <topicName>/d4zbot/imu0</topicName>
+              <serviceName>/imu/calibrate</serviceName>
+              <accelOffset>0.0 0.0 0.0</accelOffset>
+              <accelDrift>0.0 0.0 0.0</accelDrift>
+              <accelDriftFrequency>0.0 0.0 0.0</accelDriftFrequency>
+              <accelGaussianNoise>0.0 0.0 0.0</accelGaussianNoise>
+              <rateOffset>0.0 0.0 0.0</rateOffset>
+              <rateDrift>0.0 0.0 0.0</rateDrift>
+              <rateDriftFrequency>0.0 0.0 0.0</rateDriftFrequency>
+              <rateGaussianNoise>0.0 0.0 0.0</rateGaussianNoise>
+              <headingOffset>0</headingOffset>
+              <headingDrift>0</headingDrift>
+              <headingDriftFrequency>0</headingDriftFrequency>
+              <headingGaussianNoise>0</headingGaussianNoise>
+            </plugin>
+          </gazebo>
+    </xacro:macro>
+</robot>

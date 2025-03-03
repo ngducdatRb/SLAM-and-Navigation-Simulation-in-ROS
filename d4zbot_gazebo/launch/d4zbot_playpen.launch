@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+    <include file="$(find d4zbot_gazebo)/launch/playpen.launch"/>
+
+    <include file="$(find d4zbot_gazebo)/launch/spawn_d4zbot.launch"/>    
+
+</launch>
